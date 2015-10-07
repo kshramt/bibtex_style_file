@@ -13,9 +13,11 @@ export SHELLOPTS := pipefail:errexit:nounset:noclobber
 
 all_files := $(shell git ls-files)
 dbj_files := $(filter dbj/%.dbj,$(all_files))
+bst_files := $(filter bst/%.bst,$(all_files))
 
 dbj_names := $(dbj_files:dbj/%.dbj=%)
-all_names := $(dbj_names)
+bst_names := $(bst_files:bst/%.bst=%)
+all_names := $(dbj_names) $(bst_names)
 
 # Functions
 sha256 = $(1:%=%.sha256)

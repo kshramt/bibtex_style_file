@@ -678,7 +678,7 @@ FUNCTION {format.date}
   if$
   extra.label *
   before.all 'output.state :=
-  " (" swap$ * ")" *
+  " (" swap$ * ")." *
 }
 FUNCTION {format.btitle}
 { title "title" bibinfo.check
@@ -810,8 +810,11 @@ FUNCTION {format.vol.num.pages}
   }
   if$
   bolden
+  *
+  ","
+  bolden
   eid empty$
-    { format.journal.pages }
+    { format.journal.pages * "," }
     { format.journal.eid }
   if$
 }
@@ -1475,15 +1478,17 @@ FUNCTION {begin.bib}
     'skip$
     { preamble$ write$ newline$ }
   if$
+  "\setlength{\bibhang}{5ex}"
+  write$ newline$
   "\begin{thebibliography}{" number.label int.to.str$ * "}" *
   write$ newline$
   "\providecommand{\natexlab}[1]{#1}"
   write$ newline$
   "\expandafter\ifx\csname urlstyle\endcsname\relax"
   write$ newline$
-  "  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else"
+  "  \providecommand{\doi}[1]{doi: \discretionary{}{}{}#1}\else"
   write$ newline$
-  "  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup \urlstyle{rm}\Url}\fi"
+  "  \providecommand{\doi}{doi: \discretionary{}{}{}\begingroup \urlstyle{rm}\Url}\fi"
   write$ newline$
 }
 EXECUTE {begin.bib}
