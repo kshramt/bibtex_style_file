@@ -93,7 +93,7 @@ End of customized bst file
 %--------------------
 %AUTHOR NAMES:
 % ed-au,%: Full, surname last
-  nm-revf,%: Full, surname first
+%  nm-revf,%: Full, surname first
 % nm-init,ed-au,%: Initials + surname
 % nm-rev,%: Surname + initials
 % nm-rv,%: Surname + dotless initials
@@ -102,7 +102,7 @@ End of customized bst file
 % nm-rvcx,%: Surname + comma + pure initials
 % nm-rvv,%: Surname + spaceless initials
 % nm-rev1,%: Only first name reversed, initials
-% nm-revv1,%: First name reversed, with full names
+ nm-revv1,%: First name reversed, with full names
 %--------------------
 %EDITOR NAMES IN COLLECTIONS (if author names reversed)
     %: (def) Editor names NOT reversed
@@ -267,8 +267,8 @@ End of customized bst file
 %   %: (def) Collection and proceedings titles not in quotes
 %--------------------
 %CAPITALIZATION OF ARTICLE TITLE:
-    %: (def) Sentence style
-% atit-u,%: Title style
+%    %: (def) Sentence style
+ atit-u,%: Title style
 %--------------------
 %ARTICLE TITLE PRESENT:
     %: (def) Article title present
@@ -314,8 +314,8 @@ End of customized bst file
 %   %: (def) Volume with colon
 % volp-sp,%: Volume with colon and space
 % volp-semi,%: Volume with semi-colon
-  volp-com,%: Volume with comma
-% volp-blk,%: Volume with blank
+% volp-com,%: Volume with comma
+ volp-blk,%: Volume with blank
 %--------------------
 %YEAR IN JOURNAL SPECIFICATION:
     %: (def) Journal year like others
@@ -437,10 +437,10 @@ End of customized bst file
 % edcap,%: `(Editor,..)' or `(Edited by..)'
 %--------------------
 %PUNCTUATION BETWEEN SECTIONS (BLOCKS):
-    %: (def) \newblock after blocks
+%    %: (def) \newblock after blocks
 % blk-com,%: Comma between blocks
 % blk-com,com-semi,%: Semi-colon between blocks
-% blk-com,com-blank,%: Blanks between blocks
+ blk-com,com-blank,%: Blanks between blocks
 % blk-tit,%: Period after titles of articles, books, etc
 % blk-tit,tit-col,%: Colon after titles of articles, books, etc
 % blk-tita,%: Period after titles of articles
