@@ -493,7 +493,7 @@ FUNCTION {format.isbn}
 { isbn "isbn" bibinfo.check
   duplicate$ empty$ 'skip$
     {
-      "ISBN " swap$ *
+      "ISBN: " swap$ *
     }
   if$
 }
@@ -1046,10 +1046,10 @@ FUNCTION {incollection}
     { format.in.ed.booktitle "booktitle" output.check
       format.bvolume output
       format.number.series output
-      format.chapter.pages output
       format.publisher.address output
       format.edition output
-      format.isbn output
+      format.isbn "," * output
+      format.chapter.pages output
     }
     { format.incoll.inproc.crossref output.nonnull
       format.chapter.pages output
