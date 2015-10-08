@@ -91,7 +91,7 @@ STRINGS { s t}
 FUNCTION {output.nonnull}
 { 's :=
   output.state mid.sentence =
-    { " " * write$ }
+    { "" * write$ }
     { output.state after.block =
         { add.period$ write$
           newline$
@@ -493,7 +493,7 @@ FUNCTION {format.isbn}
 { isbn "isbn" bibinfo.check
   duplicate$ empty$ 'skip$
     {
-      "ISBN: " swap$ *
+      ", ISBN: " swap$ *
     }
   if$
 }
@@ -528,6 +528,7 @@ FUNCTION {format.note}
 FUNCTION {format.title}
 { title
   "title" bibinfo.check
+  ", " *
 }
 FUNCTION {format.full.names}
 {'s :=
@@ -678,7 +679,7 @@ FUNCTION {format.date}
   if$
   extra.label *
   before.all 'output.state :=
-  " (" swap$ * ")." *
+  " (" swap$ * "). " *
 }
 FUNCTION {format.btitle}
 { title "title" bibinfo.check
@@ -686,6 +687,7 @@ FUNCTION {format.btitle}
     {
     }
   if$
+  ", " *
 }
 FUNCTION {either.or.check}
 { empty$
@@ -814,7 +816,7 @@ FUNCTION {format.vol.num.pages}
   ","
   bolden
   eid empty$
-    { format.journal.pages * "," }
+    { format.journal.pages * }
     { format.journal.eid }
   if$
 }
@@ -848,8 +850,7 @@ FUNCTION {format.in.ed.booktitle}
     {
       editor "editor" format.names.ed duplicate$ empty$ 'pop$
         {
-          "," *
-          " " *
+          ", " *
           get.bbl.editor
           ", " *
           * swap$
@@ -1048,7 +1049,7 @@ FUNCTION {incollection}
       format.number.series output
       format.publisher.address output
       format.edition output
-      format.isbn "," * output
+      format.isbn ", " * output
       format.chapter.pages output
     }
     { format.incoll.inproc.crossref output.nonnull
@@ -1486,9 +1487,9 @@ FUNCTION {begin.bib}
   write$ newline$
   "\expandafter\ifx\csname urlstyle\endcsname\relax"
   write$ newline$
-  "  \providecommand{\doi}[1]{doi: \discretionary{}{}{}#1}\else"
+  "  \providecommand{\doi}[1]{, doi: \discretionary{}{}{}#1}\else"
   write$ newline$
-  "  \providecommand{\doi}{doi: \discretionary{}{}{}\begingroup \urlstyle{rm}\Url}\fi"
+  "  \providecommand{\doi}{, doi: \discretionary{}{}{}\begingroup \urlstyle{rm}\Url}\fi"
   write$ newline$
 }
 EXECUTE {begin.bib}
