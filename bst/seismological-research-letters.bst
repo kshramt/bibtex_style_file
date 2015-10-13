@@ -1096,7 +1096,7 @@ FUNCTION {manual}
   format.date "year" output.check
   date.block
   format.btitle "title" output.check
-  organization "organization" bibinfo.check output
+  organization "organization" bibinfo.check ", " * output
   address "address" bibinfo.check output
   format.edition output
   format.doi output
