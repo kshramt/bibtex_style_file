@@ -816,7 +816,7 @@ FUNCTION {format.vol.num.pages}
   ","
   bolden
   eid empty$
-    { format.journal.pages * }
+    { format.journal.pages }
     { format.journal.eid }
   if$
 }
