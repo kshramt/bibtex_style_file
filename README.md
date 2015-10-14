@@ -2,7 +2,8 @@
 
 ## Usage
 
-Run `make` to generate `bst` files in `report/bst` directory.
+Run `make` to generate `bst` files.
+Generated `bst` files are placed in `report/bst` directory.
 
 ## Dependencies
 
