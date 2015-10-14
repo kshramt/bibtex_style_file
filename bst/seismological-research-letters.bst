@@ -1044,7 +1044,7 @@ FUNCTION {incollection}
   date.block
   format.title "title" output.check
   crossref missing$
-    { format.in.ed.booktitle "booktitle" output.check
+    { format.in.ed.booktitle ", " * "booktitle" output.check
       format.bvolume output
       format.number.series output
       format.publisher.address output
