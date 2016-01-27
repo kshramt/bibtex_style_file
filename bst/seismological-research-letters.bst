@@ -376,8 +376,8 @@ FUNCTION {format.names}
     { namesleft #0 > }
     { s nameptr
       duplicate$ #1 >
-        { "{ff~}{vv~}{ll}{, jj}" }
-        { "{vv~}{ll}{, ff}{, jj}" }
+        { "{f.~}{v.~}{ll}{, jj}" }
+        { "{v.~}{ll}{, f.}{, jj}" }
       if$
       format.name$
       bibinfo bibinfo.check
@@ -978,7 +978,6 @@ FUNCTION {book}
     }
   if$
   format.edition output
-  format.isbn output
   format.doi output
   format.note output
   fin.entry
@@ -992,7 +991,6 @@ FUNCTION {booklet}
   format.title "title" output.check
   howpublished "howpublished" bibinfo.check output
   address "address" bibinfo.check output
-  format.isbn output
   format.doi output
   format.note output
   fin.entry
@@ -1028,7 +1026,7 @@ FUNCTION {inbook}
   if$
   format.edition output
   crossref missing$
-    { format.isbn output }
+    {}
     'skip$
   if$
   format.doi output
@@ -1049,8 +1047,7 @@ FUNCTION {incollection}
       format.number.series output
       format.publisher.address output
       format.edition output
-      format.isbn ", " * output
-      format.chapter.pages output
+      ", " format.chapter.pages * output
     }
     { format.incoll.inproc.crossref output.nonnull
       format.chapter.pages output
@@ -1078,7 +1075,6 @@ FUNCTION {inproceedings}
           format.publisher.address output
         }
       if$
-      format.isbn output
     }
     { format.incoll.inproc.crossref output.nonnull
       format.pages output
@@ -1089,6 +1085,13 @@ FUNCTION {inproceedings}
   fin.entry
 }
 FUNCTION {conference} { inproceedings }
+FUNCTION {format.organization}
+{
+  organization empty$
+  { "" }
+  { organization ", " * }
+  if$
+}
 FUNCTION {manual}
 { output.bibitem
   format.authors output
@@ -1096,7 +1099,7 @@ FUNCTION {manual}
   format.date "year" output.check
   date.block
   format.btitle "title" output.check
-  organization "organization" bibinfo.check ", " * output
+  format.organization output
   address "address" bibinfo.check output
   format.edition output
   format.doi output
@@ -1163,7 +1166,6 @@ FUNCTION {proceedings}
       format.publisher.address output
     }
   if$
-  format.isbn output
   format.doi output
   format.note output
   fin.entry
@@ -1177,9 +1179,8 @@ FUNCTION {techreport}
   date.block
   format.title
   "title" output.check
-  format.tr.number output.nonnull
-  institution "institution" bibinfo.warn output
-  address "address" bibinfo.check output
+  institution ", " * output
+  address output
   format.doi output
   format.note output
   fin.entry
